@@ -1,6 +1,6 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: Claudia Vargas
+  site: 'https://personalwebsite-swart-five.vercel.app/'
   base: '/'
   trailingSlash: false
 
@@ -9,14 +9,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: {Personal Website}
+    template: '%s — Personal Website'
+  description: ""
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: personalwebsite
     images:
       - url: '~/assets/images/default.png'
         width: 1200
