@@ -10,10 +10,6 @@ export interface Props {
 }
 
 const { frontmatter } = Astro.props;
-
-const metadata: MetaData = {
-  title: frontmatter?.title,
-};
 ---
 
 <Layout metadata={metadata}>
