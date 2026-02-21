@@ -5,6 +5,4 @@ excerpt: "Weekly updates."
 tags:
   - weekly
   - professional development
-metadata:
-  canonical: /blog/pm-tool-progress
 ---
