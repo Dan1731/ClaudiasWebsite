@@ -1,4 +1,5 @@
 ---
+publishDate: 2025-02-18T00:00:00Z
 title: "Centerlines Extraction Using NURBS Surfaces"
 excerpt: A geometry-processing feature in C# that generates centerlines from stitched NURBS coil surfaces for simulation workflows.
 image: "~/assets/images/image001.png"

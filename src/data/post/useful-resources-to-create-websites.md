@@ -1,4 +1,5 @@
 ---
+publishDate: 2025-02-18T00:00:00Z
 title: Custom Project Management Software Tool
 excerpt: Designing and building a project management platform from scratch to improve workflow visibility, resource planning, and data control.
 image: https://images.unsplash.com/photo-1637144113536-9c6e917be447?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80

@@ -1,4 +1,5 @@
 ---
+publishDate: 2025-02-18T00:00:00Z
 title: Bi-Directional REST API - Celoxis and QBTime
 excerpt: "Built a custom Python integration that synchronized timesheets between Celoxis and QBTime, eliminating third-party dependency costs."
 image: "~/assets/images/Celoxis-QBTime.jpg"
