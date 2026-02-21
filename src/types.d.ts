@@ -223,10 +223,6 @@ export interface Team extends Omit<Headline, 'classes'>, Widget {
   team?: Array<TeamMember>;
 }
 
-export interface Stats extends Omit<Headline, 'classes'>, Widget {
-  stats?: Array<Stat>;
-}
-
 export interface Pricing extends Omit<Headline, 'classes'>, Widget {
   prices?: Array<Price>;
 }

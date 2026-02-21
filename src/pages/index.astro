@@ -9,7 +9,6 @@ import Steps from '~/components/widgets/Steps.astro';
 import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
@@ -23,20 +22,18 @@ const metadata = {
   <!-- HERO -->
   <Hero
     actions={[
-      { variant: 'primary', text: 'View Project Blog', href: '/blog' },
+      { variant: 'primary', text: 'Weekly Project Blog', href: '/blog' },
       { text: 'Download Resume', href: '/resume.pdf' },
     ]}
   >
     <Fragment slot="title">
-      Hi! I’m <span class="text-accent dark:text-white">Claudia</span>.
+      <span class="text-accent dark:text-white">Claudia Vargas</span>
       <br />
-      <br />
-      Full-Stack Engineer with 3 years of leadership and systems implementation experience.
+      Full-Stack Engineer
       <br />
     </Fragment>
 
     <Fragment slot="subtitle">
-      <br />
       Creative problem-solver and full-stack developer specializing in API design
       and Core/UI engineering using Python, Flask, and C#.
     </Fragment>
@@ -124,14 +121,14 @@ const metadata = {
     <h2 class="text-3xl font-bold">Contact</h2>
     <p class="mt-4">
       Email:
-      <a class="underline" href="mailto:clva4454@colorad.edu">
-        clva4454@colorad.edu
+      <a class="underline" href="mailto:clva4454@colorado.edu">
+        clva4454@colorado.edu
       </a>
     </p>
     <p class="mt-2">
       LinkedIn:
       <a class="underline" href="https://www.linkedin.com/in/claudia-vargas-b80065137/">
-        linkedin.com/in/yourprofile
+        linkedin.com/in/claudia-vargas
       </a>
     </p>
     <p class="mt-2">

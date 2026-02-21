@@ -70,6 +70,12 @@ const { post, url } = Astro.props;
         {post.excerpt}
       </p>
 
+      {Astro.slots.has('header-extra') && (
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 mb-8">
+          <slot name="header-extra" />
+        </div>
+      )}
+
       {
         post.image ? (
           <Image

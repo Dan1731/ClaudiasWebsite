@@ -13,6 +13,9 @@ import { findImage } from '~/utils/images';
 import type { MetaData } from '~/types';
 import RelatedPosts from '~/components/blog/RelatedPosts.astro';
 
+import WeeklyTimeline from '~/components/WeeklyTimeline.astro';
+import { weeklyPosts } from '~/data/post/weeklyPosts';
+
 export const prerender = true;
 
 export const getStaticPaths = (async () => {
@@ -22,6 +25,23 @@ export const getStaticPaths = (async () => {
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { post } = Astro.props as Props;
+const isWeekly =
+  Array.isArray(post.tags) &&
+  post.tags.some((t) => t?.slug === 'weekly' || t?.title === 'weekly');
+
+const DEFAULT_WEEK = 5;
+
+const useWeeklyTabs =
+  Array.isArray(post.tags) &&
+  post.tags.some((t) => t?.slug === 'weekly' || t?.title === 'weekly') &&
+  (post.title?.toLowerCase?.().includes('custom project management software tool') ?? false);
+
+const sortedWeeks = [...weeklyPosts].sort((a, b) => a.id - b.id);
+
+const weekButtons = sortedWeeks.map((w) => ({
+  id: `week${w.id}`,
+  label: `Week ${w.id}`,
+}));
 
 const url = getCanonical(getPermalink(post.permalink, 'post'));
 const image = (await findImage(post.image)) as ImageMetadata | string | undefined;
@@ -46,9 +66,97 @@ const metadata = merge(
 ---
 
 <Layout metadata={metadata}>
-  <SinglePost post={{ ...post, image: image }} url={url}>
-    {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
-  </SinglePost>
-  <ToBlogLink />
-  <RelatedPosts post={post} />
+  <section class="mx-auto max-w-6xl px-6 py-12">
+      <div>
+        <SinglePost post={{ ...post, image: image }} url={url}>
+          {useWeeklyTabs ? (
+            <>
+              {/* Week circles */}
+              <div class="week-tabs" role="tablist" aria-label="Weekly progress tabs">
+                {weekButtons.map((w) => (
+                  <button
+                    class="week-btn"
+                    type="button"
+                    role="tab"
+                    aria-controls={`${w.id}-panel`}
+                    aria-selected={w.id === `week${DEFAULT_WEEK}` ? "true" : "false"}
+                    data-week={w.id}
+                  >
+                    {w.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Panels */}
+              {sortedWeeks.map((w) => (
+                <section
+                  id={`week${w.id}-panel`}
+                  class="week-panel"
+                  role="tabpanel"
+                  data-week-panel={`week${w.id}`}
+                  data-active={w.id === DEFAULT_WEEK ? "true" : "false"}
+                >
+                  <h2 class="text-2xl font-bold mb-2">{w.title}</h2>
+
+                  {w.sections.map((s) => (
+                    <div class="mb-6">
+                      <h3 class="text-lg font-semibold mb-2">{s.heading}</h3>
+                      {s.paragraphs.map((p) => (
+                        <p class="mb-3">{p}</p>
+                      ))}
+                      {s.image && (
+                      <img src={s.image} alt="Week image" class="my-4 rounded-lg shadow-md" />)}
+                    </div>
+                  ))}
+                </section>
+              ))}
+
+              <style>
+                .week-tabs { display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin: 20px 0; }
+                .week-btn {
+                  width:98px; height:98px; border-radius:9999px; border:2px solid #d1d5db;
+                  background:#fff; cursor:pointer; font-weight:600;
+                }
+                .week-btn[aria-selected="true"] { border-color:#111827; }
+                .week-panel { display:none; }
+                .week-panel[data-active="true"] { display:block; }
+              </style>
+
+              <script is:inline>
+                const tabButtons = Array.from(document.querySelectorAll('[role="tab"][data-week]'));
+                const panels = Array.from(document.querySelectorAll('[data-week-panel]'));
+
+                function setActive(weekId, pushHash = true) {
+                  tabButtons.forEach(btn => {
+                    const active = btn.dataset.week === weekId;
+                    btn.setAttribute('aria-selected', active ? 'true' : 'false');
+                    btn.tabIndex = active ? 0 : -1;
+                  });
+
+                  panels.forEach(panel => {
+                    panel.dataset.active = (panel.dataset.weekPanel === weekId) ? 'true' : 'false';
+                  });
+
+                  if (pushHash) history.replaceState(null, "", `#${weekId}`);
+                }
+
+                // Default Week 5 unless hash says otherwise
+                const initial = (location.hash || "").replace("#", "");
+                if (initial && panels.some(p => p.dataset.weekPanel === initial)) {
+                  setActive(initial, false);
+                } else {
+                  setActive("week5", false);
+                }
+
+                tabButtons.forEach(btn => btn.addEventListener('click', () => setActive(btn.dataset.week)));
+              </script>
+            </>
+          ) : (
+            post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />
+          )}
+        </SinglePost>
+        <ToBlogLink />
+      <RelatedPosts post={post} />
+    </div>
+  </section>
 </Layout>

@@ -2,9 +2,8 @@
 import Features2 from '~/components/widgets/Features2.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import Hero from '~/components/widgets/Hero.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import pups from '~/assets/images/pups.jpg';
 
 const metadata = {
   title: 'Claudia | Portfolio',
@@ -14,32 +13,164 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
 
-  <Hero
-    tagline="Portfolio"
-    image={{
-      // Optional: replace later with a headshot or remove image by setting it to null if supported
-      src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=2070&q=80',
-      alt: 'Workspace',
-    }}
-  >
-    <Fragment slot="title">
-      Hi, I’m <span class="text-accent dark:text-white">Claudia</span>.<br />
-      Computer Science student & software developer.
-    </Fragment>
+  <!-- Custom About Header Section -->
+  <section class="mx-auto max-w-6xl px-6 py-20">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
 
-    <Fragment slot="subtitle">
-      I build full-stack applications with Python, Flask, JavaScript, and modern UI tooling.
-      I’m currently developing <strong>CoAdapt</strong> — a project management platform with task tracking,
-      financial tracking, and timesheet-based cost calculations.
-    </Fragment>
+      <!-- LEFT: TEXT -->
+      <div class="text-left">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          <span class="text-accent dark:text-white">Hello!</span>
+        </h1>
 
-    <Fragment slot="actions">
-      <div class="flex flex-wrap gap-3">
-        <a class="btn btn-primary" href="/blog">View Project Blog</a>
-        <a class="btn btn-secondary" href="/resume.pdf" target="_blank" rel="noopener">Download Resume</a>
-        <a class="btn btn-tertiary" href="#contact">Contact</a>
+        <div class="space-y-5 text-lg text-gray-700 dark:text-slate-300 leading-relaxed">
+
+          <p>
+            I'm a full-stack engineer.
+          </p>
+
+          <p>
+            Currently, I am a software developer I at <strong>
+              <a 
+                href="https://www.ema3d.com/" 
+                target="_blank" 
+                rel="noopener noreferrer">EMA3D </a> </strong>, 
+            where I work on the Core/ UI team to help maintain and 
+            consulting tools for engineering software systems integrated with <strong>Ansys</strong>. 
+          </p>
+
+          <p>
+            In this role, I've lead features, improved unit testing, and partnered closely with product and engineers to support
+            reliable deployments and release quality. Before moving into development full-time, I spent several years in management,
+            including serving as Lead Project Manager at EMA3D.
+          </p>
+        
+          <p>
+            Alongside professional work, I’m also a part-time student at the University of Colorado Boulder. Coursework that’s been
+            especially valuable includes <strong>Artificial Intelligence</strong> (reinforcement learning),
+            <strong>Machine Learning</strong> (model training), and <strong>Natural Language Processing</strong>. 
+          </p>
+
+          <p>  
+            I also have a B.S. in Business Marketing, which strongly influences the kinds of systems and workflows I'm passionate about building.
+          </p>
+        
+          <p>
+            Outside of work, you can usually find me running with my two shih tzus and husband, enjoying a Red Rocks show, or 3D printing
+            miniatures.
+          </p>
+        </div>
+    </div>
+
+    <div class="flex justify-center md:justify-end">
+        <img
+          src={pups.src}
+          alt="My dogs"
+          class="rounded-2xl shadow-lg max-w-sm w-full object-cover"
+        />
       </div>
-    </Fragment>
-  </Hero>
+  </div>
+</section>
 
+<!-- Buttons -->
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a class="btn btn-primary" href="/blog">View Project Blog</a>
+        <a class="btn btn-secondary" href="/resume.pdf" target="_blank" rel="noopener">
+          Download Resume
+        </a>
+      </div>
+
+  <!-- What I do (structured skills + responsibilities) -->
+  <Features3
+    title="What I focus on"
+    subtitle="A mix of software engineering, systems integration, and workflow-aware design."
+    columns={3}
+    isBeforeContent={true}
+    items={[
+      {
+        title: 'API Design & Integrations',
+        description: 'REST APIs, mapping layers, sync reliability, and business friendly tools.',
+        icon: 'tabler:plug-connected',
+      },
+      {
+        title: 'Core/UI Engineering',
+        description: 'Building and maintaining features in engineering software tools integrated with Ansys.',
+        icon: 'tabler:layout-dashboard',
+      },
+      {
+        title: 'CI/CD & Release Quality',
+        description: 'Jenkins monitoring, build failure resolution, and AWS EC2 release candidate validation.',
+        icon: 'tabler:git-merge',
+      },
+      {
+        title: 'Testing & Maintainability',
+        description: 'Unit tests in Python and C#, improving coverage and long-term stability.',
+        icon: 'tabler:test-pipe',
+      },
+      {
+        title: 'Project Operations Background',
+        description: 'Scaled project processes and implemented systems that improved visibility and execution.',
+        icon: 'tabler:timeline',
+      },
+      {
+        title: 'Product Centered Engineering',
+        description: 'Designing features around release constraints, usability, and stakeholder needs.',
+        icon: 'tabler:bulb',
+      },
+    ]}
+  />
+
+  <!-- Career Timeline -->
+<section class="mx-auto max-w-5xl px-6 py-20">
+  <h2 class="text-3xl font-bold mb-10">Career Timeline</h2>
+
+  <div class="space-y-10 border-l-2 border-gray-300 dark:border-slate-700 pl-8">
+
+    <div>
+      <h3 class="text-xl font-semibold">
+        Operations → Project Management
+      </h3>
+      <h4>
+      Growing companies is my goal. 
+      </h4>
+      <p class="mt-2 text-gray-700 dark:text-slate-300">
+        
+        I started in operations at a family-owned company, leading a team of 20 and helping expand into new locations in Colorado and Oklahoma. 
+        From there, I moved to EMA3D to pursue a technology focused career as Lead Project Manager maintaining over 50 projects at any time. 
+      </p>
+    </div>
+
+    <div>
+      <h3 class="text-xl font-semibold">
+        Celoxis Implementation & Scale-Up
+      </h3>
+      <p class="mt-2 text-gray-700 dark:text-slate-300">
+        My first software project was an internal company-wide PM tool API that synced to Quickbooks Time. I helped achieve this with a quick turn around
+        that preserved business friendly logic and prevented painpoints from technical staff. 
+      </p>
+    </div>
+
+    <div>
+      <h3 class="text-xl font-semibold">
+        Transition into Development (Apr 2025)
+      </h3>
+      <p class="mt-2 text-gray-700 dark:text-slate-300">
+        While still in project management, I began contributing directly to the Core/UI starting with bug fixes. After training two teammates to take over 
+        operations, I shifted my focus fully toward development.
+      </p>
+    </div>
+
+    <div>
+      <h3 class="text-xl font-semibold">
+        Full-Time Developer (Sept 2025)
+      </h3>
+      <p class="mt-2 text-gray-700 dark:text-slate-300">
+        I moved into a full-time role on the Core/UI team, working on APIs, internal tools, and engineering workflows tied to simulation software. 
+        Today, I focus on building systems and financial tools.
+      </p>
+    </div>
+
+  </div>
+</section>
+</Layout>
   
