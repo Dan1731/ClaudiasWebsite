@@ -29,7 +29,7 @@ const isWeekly =
   Array.isArray(post.tags) &&
   post.tags.some((t) => t?.slug === 'weekly' || t?.title === 'weekly');
 
-const DEFAULT_WEEK = 5;
+const DEFAULT_WEEK = 7;
 
 const useWeeklyTabs =
   Array.isArray(post.tags) &&
@@ -140,12 +140,12 @@ const metadata = merge(
                   if (pushHash) history.replaceState(null, "", `#${weekId}`);
                 }
 
-                // Default Week 5 unless hash says otherwise
+                // Default Week 7 unless hash says otherwise
                 const initial = (location.hash || "").replace("#", "");
                 if (initial && panels.some(p => p.dataset.weekPanel === initial)) {
                   setActive(initial, false);
                 } else {
-                  setActive("week5", false);
+                  setActive("week7", false);
                 }
 
                 tabButtons.forEach(btn => btn.addEventListener('click', () => setActive(btn.dataset.week)));

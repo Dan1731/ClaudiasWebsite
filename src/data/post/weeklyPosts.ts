@@ -134,8 +134,88 @@ export const weeklyPosts: WeeklyEntry[] = [
     title: "Week 6",
     sections: [
       {
-        heading: "Summary",
-        paragraphs: ["..."],
+        heading: "What did you do last week?",
+        paragraphs: [
+          "Last week I finished the backend for the projects page and started working on the UI. I made it so that the user can add and remove columns by selecting the three dots on the side.",
+          "When the user adds a new column to track, it appends to the most right column. The user can also add/ remove a project by clicking one of the buttons at top or edit the project table.",
+          "I tried not to focus on the UI too much but just enough so I can visually see how the projects page interacts with the tasks. I have a light users set up so I could give a few mock users rates and see how that influences tabs like planned labor since beforehand it would = None.",
+        ],
+        image: "/images/week6ProjectPage.png",
+      },
+      {
+        heading: "What do you plan to do this week?",
+        paragraphs: [
+          "Most of the tasks data is the same as the projects page, so I'd like to get most if not all of that done. Then I can start working on interacting both pages and including clients/ team (users).",
+        ],
+      },
+      {
+        heading: "Are there any impediments in your way?",
+        paragraphs: [
+          "I'm a little worried on time. I planned that the projects tab would take a while but I think due to a bunch of dependencies I'm starting to get a little scattered.",
+        ],
+      },
+      {
+        heading: "Reflection",
+        paragraphs: [
+          "I'm taking Guinn 's advice on trying to get a workflow functional. I think once I can get that going other features are going to start clicking into place.",
+        ],
+      },
+    ],
+  },
+  {
+    id: 7,
+    title: "Week 7 (Mid Semester Update)",
+    sections: [
+      {
+        heading: "Project Update:",
+        paragraphs: [
+          "My project was influenced by my career in project management and using tools that had handled pain points poorly or not at all. These included:",
+          "● Billing rate updates that required changing each member individually rather than in bulk.",
+          "● No ability to allocate monthly effort for tasks spanning multiple months.",
+          "● Planning tools that only support percentage based allocation rather than hours, or don't support both.",
+          "● Unclear nonlabor cost categorization.",
+          "● Limited futures reporting that doesn't allow toggling projected work in and out of financial reports.",
+          "● Lackluster resource management planning.",
+          "This project is my attempt to build a tool that addresses these in a way that would have benefited the current Project Control team. If it goes well, I'd like to present this tool to them as they have helped me navigate the most important pain points."
+        ]
+      },
+      {
+        heading: "Original Goals:",
+        paragraphs: [
+        "Build a full stack PM tool supporting:",
+        "● Project tracking with financial calculations.",
+        "● Task management with variable monthly effort allocation.",
+        "● Resource planning by role and skillset.",
+        "● Time tracking connected to billing rates and project financials.",
+        "● A workload calendar tracking when resources will be needed based on utilization.",
+        "● A dashboard with financial and project reports."
+        ],
+      },
+      {
+        heading: "Work Completed So Far:",
+        paragraphs: [
+        "● Projects page: Users can create, edit inline, bulk edit, and remove projects. Columns are customizable per team without affecting underlying data. Projected and actual values calculate automatically from time entries and billing rates.",
+        "● Team and client pages: Fully functional. Team members have hourly billing rates connected to project financials. Clients are linked to their project history.",
+        "● Time tracking: Implemented as a universal button across all pages, capturing user, project, hours, and date. This feeds directly into financial calculations.",
+        "● Database: Schema is stable with validation rules and constraints in place. Feature visibility logic allows users to customize views so different teams can focus on information that matters to them without changing the underlying data stored in the database.",
+        ],
+      },
+      {
+        heading: "Remaining Work:",
+        paragraphs: [
+          "● Week 8: Task page (currently a replication of the project page, needs targeted edits and project modal showing time tracked, reports, Gantt chart, and progress per project. I think to keep things more simple, I'll use an existing UI as a baseline to start on.",
+          "● Week 9 & Spring Break: Workload calendar tracking resource demand by role and skillset using utilization calculations (total utilized by role divided by manageable utilization). This will include placeholders indicating when staff will be needed and the ability to toggle futures in and out to show their impact on project financials, a gap I've noticed in most existing tools. The data is already in place, making implementation straightforward mainly on the front end.",
+          "● Week 10: To-do page for resources to view assigned work and provide task updates. First feature to cut if time runs short.",
+          "● Weeks 11-12: Dashboard with a demo set of financial and project reports. If time is constraint at least very simplified.",
+          "● Week 13: Full demo using real users, projects, tasks, and time entries based on testing debugs I've created."
+        ],
+      },
+      {
+        heading: "Reflection:",
+        paragraphs: [
+          "The most difficult part of the project has been managing dependencies between different features. The system relies on shared data structures, so changes when implementing new features have affected multiple files. Keeping the codebase organized as the project grows was an initial struggle. My solution was to include a lot of over descriptive comments and testing, which has worked well to move the project forward. I also take more appreciation for software tools after putting one together. The goals couldn’t have been done without a foundation that I feel like I’ve mostly built. Most of what I’m missing is UI related tables and containers, while the data has been completed in the backend.",
+          "Ultimately, everything I've built was shaped from my own professional experience. Each feature exists because I or a colleague has run into a specific limitation in existing software. To keep myself organized I have put together a personal evaluation for the end of the project. I’d say many things are partially complete and can simplify things without losing track of my goals."
+        ],
       },
     ],
   },
